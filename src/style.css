@@ -23,25 +23,25 @@ body{
     display: flex;
     justify-content: space-between;
     flex-wrap:wrap;
-    max-width: 100vh;
-    width: 90%;
+    max-width: 100wh;
+    width:  100wh;
     margin: 30px auto;
     overflow: hidden;
     padding: 1%;
 }
 
-.card_conteiner{
+.card_container{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 30%; 
     height: 15%;
-    font-family:'Roboto', sans-serif;
+    font-family:"nunito";
     border: 3px solid #0F0E0E;
     border-radius: 6%;
     background-image: url(Background_Card.png);
-    overflow: hidden;
+    margin: 10px;
 }
 
 .card_Id{
@@ -64,10 +64,16 @@ body{
 }
 
 .card_2nd_cont{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     height: 40%;
     width: 100%;
     color: #F4EBEB; 
     background-color: #0F0E0E;
+    background-position: 100%;
+    
 }
 
 .card_type_icon{
@@ -75,7 +81,7 @@ body{
 }
 
 @media (max-width: 700px){
-    .card_conteiner{
+    .card_container{
         /* width: 190px; */
         margin-bottom: 1rem;
         min-width: 160px; 
@@ -84,6 +90,30 @@ body{
         height: 115px;
         width: 115px;
         background-color: aqua;
+    }
+    .card_Id{
+        display: flex;
+        top: 0;
+        left: 0;
+        justify-content: center;
+        height: 25px;
+        width: 40px;
+        border: 3px solid #0F0E0E;
+        border-radius: 6%;
+        background-color: #FFA000; 
+    }
+}
+
+@media (min-width: 700px){
+    .card_container{
+        /* width: 190px; */
+        margin-bottom: 1rem;
+        max-width: 160px; 
+    }
+    .card_character{
+        height: 115px;
+        width: 115px;
+        background-color: rgb(255, 0, 170);
     }
     .card_Id{
         display: flex;
