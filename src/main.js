@@ -1,19 +1,80 @@
+// importacion data y funciones data.js
 import { example } from './data.js';
 import data from './data/pokemon/pokemon.js';
-console.log(data.pokemon[0].name);
-console.log(data.pokemon[0].generation.name);
-console.log(data.pokemon[0].generation.num);
+// console.log(data.pokemon[5].name);
+// console.log(data.pokemon[5].generation.name);
+// console.log(data.pokemon[5].generation.num); 
 
 window.onload = () => {
-    let card = document.querySelector('.card_container');
-    let cardStructure =
-    `<p class="card_Id">${data.pokemon[2].num}</p>
-    <img class="card_character" src="${data.pokemon[2].img}" alt="character card">
-    <article class="card_2nd_cont">
-        <h3 class="card_name">${data.pokemon[2].name}</h3>
-        <img class="card_type_icon" src="https://cdn-icons-png.flaticon.com/512/427/427112.png" alt="icon type card">
-        <p class="card_type">${data.pokemon[2].type}</p>
-    </article>`
+    // declaracion variables
+    let card = document.querySelector('.content-section');
+    let filterSection = document.querySelector('.filter');
+    let filterStructure= "";
+    let filters = {
+        "type":[],
+        "resistant":[],
+        "weaknesses":[]
+    }
 
-    card.innerHTML = cardStructure;
+    // ciclo for para crear tarjetas
+    for(let character of data.pokemon){
+        let cardStructure =
+        `<article class="card">
+            <p class="card__id">${character.num}</p>
+            <figure class="card__character">
+                <img class="card__image" src="${character.img}" alt="character card">
+            </figure>
+            <article class="card__content">
+                <h3 class="card__name">${character.name}</h3>
+                <img class="card__icon" src="https://cdn-icons-png.flaticon.com/512/427/427112.png" alt="icon type card">
+                <p class="card__type">${character.type.join(", ")}</p>
+            </article>
+        </article>`
+        card.innerHTML += cardStructure;
+
+        // obtiene valores para cada seccion de filtros
+        Object.keys(filters).forEach(filter => {
+            filters[filter] = addElementsToArray(filters[filter], character[filter])
+        }) 
+    }
+
+    // funcion para concatenar dos arrays sin repetir valores
+    function addElementsToArray(array1, array2){
+        array2.forEach(item => {
+            if(!array1.includes(item)){
+                array1.push(item);
+            }
+        }); 
+        return array1
+    }
+
+    // organiza los elementos de cada seccion de filtro por orden alfabetico
+    Object.keys(filters).forEach(filter => {
+        filters[filter].sort(function (a, b) {
+            return a.localeCompare(b);
+        });
+    })  
+    
+    // ciclo para crear las secciones de filtros de acuerdo a caracteristicas establecidas
+    for(let[listkey, listValues] of Object.entries(filters)){
+        let values = "";
+        listValues.forEach((value,index)=>{
+            values+=
+            `<li>
+                <input type="checkbox" id="${listkey}${index}" ><label for="${listkey}${index}">${value}</label>
+            </li>
+            `
+        })
+        // crea estructura de cada seccion de filtro
+        filterStructure+=
+        `<section class="filter__item">
+            <h2>${listkey}</h2>
+            <ul>
+                ${values}
+            </ul>
+        </section>`
+    }
+
+    // insertar estructura filtros
+    filterSection.innerHTML = filterStructure;
 }
