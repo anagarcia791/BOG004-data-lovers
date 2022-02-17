@@ -1,14 +1,9 @@
-// importacion data y funciones data.js
 // import { TypeFilter, RegionFilter } from './data.js';
-// import * as dataFunctions from './data.js';
+// importacion data y funciones data.js
+import * as dataFunctions from './data.js';
 import data from './data/pokemon/pokemon.js';
 
 window.onload = () => {
-    //let filteredOutData;
-    //filteredOutData = TypeFilter(data.pokemon, "dragon")
-    //filteredOutData = RegionFilter(data.pokemon, "kanto")
-    //console.log(filteredOutData);
-
     // declaracion variables uso global
     let completeDataSet = data.pokemon;
     let character = "";
@@ -128,44 +123,14 @@ window.onload = () => {
     // declaracion filterCheck para controlar el evento de check
     let filterCheck = document.querySelectorAll('.filter__check');
     // console.log(filterCheck);   
-    
-    // declaracion activeFilters para adicionar el valor de los filtros seleccionados 
-    let activeFilters = [];
-
-    // declaracion filteredPokemons dataset que incluye unicamente lo seleccionado 
-    let filteredPokemons = completeDataSet; //data.pokemon; //completeDataSet; valor de inicio
-
-    //función para detectar seleccion y agregar los elementos seleccionados a activeFilters
-    function filterHandler(filter,checked){
-        console.log(filter,checked);
-        activeFilters = 
-            checked
-                ? [...activeFilters,filter]
-                : activeFilters.filter(value => value!==filter)
-                //console.log(activeFilters,filter)
-                //console.log(activeFilters)
-        filteredPokemons = completeDataSet.filter(pokemon => 
-        //filteredPokemons = data.pokemon.filter(pokemon =>
-            activeFilters.reduce(
-                (accumulator, activeFilter) => 
-                    pokemon.type.includes(activeFilter)||accumulator,
-                    false
-                    //se devuelve un valor false true para filtrar solo los que tienen
-                    //true que deben ser igual a los que tienen el filtro activo
-            )
-        )
-        // return filteredPokemons;
-        createCards(filteredPokemons);
-    }
 
     // ciclo para encontrar los filtros a los que se les aplica check 
     filterCheck.forEach((element)=>{
         // console.log(element)
         element.onchange = (event) => {
-            //dataFunctions.filterHandler(event.target.value,event.target.checked)
-            filterHandler(event.target.value,event.target.checked)
-            // console.log(event.target.value)
-            // console.log(event.target.checked)
+            let filteredPokemonsResult = dataFunctions.filterHandler(event.target.value,event.target.checked)
+            createCards(filteredPokemonsResult);
+            // console.log(event.target.value, event.target.checked)
             // console.log(filteredPokemons.length)
         };
     })
