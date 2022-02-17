@@ -41,15 +41,9 @@ window.onload = () => {
     // llamado funcion para crear tarjetas en html
     createCards(completeDataSet)
 
-    // declaracion variable filterSection para seccion filtros
-    let filterSection = document.querySelector('.block-filter');
-
-    // declaracion filterStructure vacia para crear mas adelante estructura html
-    let filterStructure = "";
-
     // declaracion objeto filtros segun HU3
     let filters = {
-        "type":[]
+        "type":[],
         // "resistant":[],
         // "weaknesses":[]
     }
@@ -89,9 +83,16 @@ window.onload = () => {
         }) 
     }
 
-    // llamado funcion para crear agregar elementos a objeto filters
+    // llamando funcion para agregar elementos a objeto filters
     createFilters(completeDataSet)
+    
+    // declaracion variable filterSection para seccion filtros
+    let filterSection = document.querySelector('.block-filter');
 
+    // declaracion filterStructure vacia para crear estructura html
+    let filterStructure = "";
+
+    // funcion para crear estructura de filtros en html 
     function createFiltersStructure(filters){
         // ciclo para crear las secciones de filtros de acuerdo 
         // a caracteristicas establecidas
@@ -126,14 +127,17 @@ window.onload = () => {
 
     // declaracion filterCheck para controlar el evento de check
     let filterCheck = document.querySelectorAll('.filter__check');
-    //console.log(filterCheck);
+    // console.log(filterCheck);   
+    
     // declaracion activeFilters para adicionar el valor de los filtros seleccionados 
     let activeFilters = [];
-    // declaracion filteredPokemons dataset que incluye unicamente lo seleccionado 
-    let filteredPokemons = completeDataSet; //data.pokemon; //completeDataSet;
 
+    // declaracion filteredPokemons dataset que incluye unicamente lo seleccionado 
+    let filteredPokemons = completeDataSet; //data.pokemon; //completeDataSet; valor de inicio
+
+    //función para detectar seleccion y agregar los elementos seleccionados a activeFilters
     function filterHandler(filter,checked){
-        //console.log(filter,checked);
+        console.log(filter,checked);
         activeFilters = 
             checked
                 ? [...activeFilters,filter]

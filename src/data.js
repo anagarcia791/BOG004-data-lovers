@@ -6,8 +6,8 @@ export const RegionFilter = (dataSet, region) => {
   return dataSet.filter((selectedRegion => (selectedRegion.generation.name === region)));
 }
 
-// Función para filtra los Pokémon segun su región
-export const TypeFilter = (dataSet,type) => {
+// Función para filtra los Pokémon segun su tipo
+export const TypeFilter = (dataSet, type) => {
   return dataSet.filter((selectedData) => (selectedData.type.includes(type)));
 }
 
