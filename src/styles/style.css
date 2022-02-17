@@ -50,12 +50,13 @@ main{
 .card__id{
     align-self: flex-start;
     text-align: center;
-    height: 25px;
-    width: 40px;
+    height: 28px;
+    width: 42px;
     margin: 5px;
-    border: 1px solid #302e2e;
-    border-radius: 0.5rem;
-    background-color:  #f55610;  
+    font-weight: bold;
+    /* border: 1px solid #302e2e; */
+    border-radius: 0.3rem;
+    background-color:  #FFA000; /*#f3610c;*/  
     /* #FFA000 */
 }
 .card__character{
@@ -80,7 +81,8 @@ main{
     height: 40%;
     width: 100%;
     color: #F4EBEB; 
-    background-color: #f55610;
+    text-transform: uppercase;
+    background-color: rgb(17, 16, 16) ;/*#f55610;*/ /* rgb(17, 16, 16);*/
     background-position: 100%;
     border-bottom: 1px solid #302e2e;
     border-bottom-left-radius: 0.5rem;
@@ -90,4 +92,18 @@ main{
 /* estilos icono de tipo contenedor hijo */
 .card__icon{
     width: 15%;
+}
+
+.filter__item{
+    text-transform: uppercase;
+}
+
+ul{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+li{
+    padding-left: 10px;
 }
