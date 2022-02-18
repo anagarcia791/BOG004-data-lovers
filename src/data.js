@@ -1,10 +1,10 @@
 // importacion data y funciones data.js
-import data from './data/pokemon/pokemon.js';
+import dataPokemon from './data/pokemon/pokemon.js';
 
 // declaracion activeFilters para adicionar el valor de los filtros seleccionados 
-let activeFilters = [];
+let activeFiltersDefault = [];
 
-export function filterHandler(filter,checked){
+export function filterHandler(filter,checked, data=dataPokemon, activeFilters=activeFiltersDefault){
     // console.log(filter,checked);
     activeFilters = 
         checked
@@ -22,8 +22,8 @@ export function filterHandler(filter,checked){
     )
 
     !activeFilters.length
-      ? filteredPokemons = data.pokemon
-      : filteredPokemons
+        ? filteredPokemons = data.pokemon
+        : filteredPokemons
 
     return filteredPokemons;
 }
