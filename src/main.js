@@ -1,13 +1,12 @@
 // import { TypeFilter, RegionFilter } from './data.js';
 // importacion data y funciones data.js
-import * as dataFunctions from './data.js';
 import data from './data/pokemon/pokemon.js';
+import * as dataFunctions from './data.js';
 
 window.onload = () => {
     // declaracion variables uso global
     let completeDataSet = data.pokemon;
-    let character = "";
-
+    
     // declaracion variable card para seccion tarjetas
     let card = document.querySelector('.content-section');
 
@@ -15,7 +14,7 @@ window.onload = () => {
     function createCards(datasetToUse){
         let renderString = "";
         // ciclo for para crear tarjetas
-        for(character of datasetToUse){
+        for(let character of datasetToUse){
             // console.log(character);
             let cardStructure =
             `<article class="card">
@@ -45,7 +44,6 @@ window.onload = () => {
 
     // funcion para concatenar dos arrays sin repetir elementos dentro de uno de ellos
     function addElementsToArray(array1, array2){
-        // console.log(array1,array2,character.name);
         array2.forEach(item => {
             if(!array1.includes(item)){
                 array1.push(item);
@@ -62,13 +60,14 @@ window.onload = () => {
             // obtiene elementos(tipos-resistencia-debilidad) 
             // para cada seccion de filtros
             Object.keys(filters).forEach(filter => {
+                // console.log(filters[filter], pokemonCharacter[filter],pokemonCharacter.name);
                 filters[filter] = 
                 addElementsToArray(filters[filter], pokemonCharacter[filter])
             })
         }
         // console.log(Object.keys(filters));
         // console.log(filters);
-
+        
         // organiza los elementos de cada seccion de filtro por orden alfabetico
         Object.keys(filters).forEach(filter => {
             filters[filter].sort(function (a, b) {
