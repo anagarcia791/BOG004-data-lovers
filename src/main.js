@@ -128,7 +128,7 @@ window.onload = () => {
     filterCheck.forEach((element)=>{
         // console.log(element)
         element.onchange = (event) => {
-            let filteredPokemonsResult = dataFunctions.filterHandler(event.target.value,event.target.checked)
+            let filteredPokemonsResult = dataFunctions.filterHandler(event.target.value,event.target.checked);
             createCards(filteredPokemonsResult);
             // console.log(event.target.value, event.target.checked)
             // console.log(filteredPokemons.length)
