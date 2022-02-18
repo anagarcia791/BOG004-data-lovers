@@ -1,23 +1,37 @@
-import { example, anotherExample } from '../src/data.js';
+import { filterHandler } from '../src/data.js';
 
+const testData = {
+  pokemon: [
+    {
+      "type": [
+        "grass",
+        "poison"
+      ],
+    },
+    {
+      "type": [
+        "poison"
+      ],
+    },
+    {
+      "type": [
+        "ice",
+      ],
+    }
+  ]
+}
 
 describe('example', () => {
-  it('is a function', () => {
-    expect(typeof example).toBe('function');
-  });
-
   it('returns `example`', () => {
-    expect(example()).toBe('example');
+    const result = filterHandler('grass', true, testData, []);
+    expect(result).toHaveLength(1);
   });
-});
-
-
-describe('anotherExample', () => {
-  it('is a function', () => {
-    expect(typeof anotherExample).toBe('function');
+  it('returns `example` 2', () => {
+    const result = filterHandler('poison', true, testData, []);
+    expect(result).toHaveLength(2);
   });
-
-  it('returns `anotherExample`', () => {
-    expect(anotherExample()).toBe('OMG');
+  it('returns `example` 3', () => {
+    const result = filterHandler('ice', true, testData, []);
+    expect(result).toHaveLength(1);
   });
 });
