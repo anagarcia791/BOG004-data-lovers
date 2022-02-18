@@ -2,65 +2,34 @@
 import dataPokemon from './data/pokemon/pokemon.js';
 
 // declaracion activeFilters para adicionar el valor de los filtros seleccionados 
-let activeFiltersDefault = [];
+let activeFilters = [];
 
-export function filterHandler(filter,checked, data=dataPokemon, activeFilters=activeFiltersDefault){
+export function filterHandler(filter, checked, data=dataPokemon.pokemon){
     // console.log(filter,checked);
     activeFilters = 
         checked
-            ? [...activeFilters,filter]
-            : activeFilters.filter(value => value!==filter)
+            ? [...activeFilters,filter] // checked true
+            : activeFilters.filter(value => value!==filter) // checked false
             // console.log(activeFilters,filter)
             // console.log(activeFilters)
-    // declaracion filteredPokemons dataset que incluye unicamente lo seleccionado
-    let filteredPokemons = data.pokemon.filter(pokemon =>
-        activeFilters.reduce((accumulator, activeFilterValue) => 
-            pokemon.type.includes(activeFilterValue)||accumulator,false
-                // se devuelve un valor false o true para filtrar solo los que tienen true
-                // que deben ser igual a los que tienen el filtro activo
-        )
-    )
 
-    !activeFilters.length
-        ? filteredPokemons = data.pokemon
-        : filteredPokemons
+    // declaracion filteredPokemons dataset que incluye unicamente lo seleccionado
+    let filteredPokemons = [];
+
+    for(let poke of data){
+        //console.log(pokes);
+        for(let pokeType of poke.type){
+            if(activeFilters.includes(pokeType)){
+                filteredPokemons.push(poke);
+            }
+        }   
+    }
+
+    //console.log(activeFilters.length);
+    //console.log(!activeFilters.length);
+    !activeFilters.length 
+        ? filteredPokemons = data       // activeFilters.length = 0 true
+        : filteredPokemons              // activeFilters.length diferente de 0 false
 
     return filteredPokemons;
 }
-
-
-// //función para detectar seleccion y agregar los elementos seleccionados a activeFilters
-// function filterHandler(filter,checked){
-//     console.log(filter,checked);
-//     activeFilters = 
-//         checked
-//             ? [...activeFilters,filter] //similar a un push como nuevo array
-//             : activeFilters.filter(value => value!==filter) //saca de la lista lo que se desmarque
-//             //console.log(activeFilters,filter)
-//             console.log(activeFilters)
-
-//  // let filteredPokemons = [];
-
-//  // for(let pokes of completeDataSet){
-//  //     console.log(pokes);
-//  //     for(let typeSel of pokes.type){
-//  //         if(activeFilters.includes(typeSel)){
-//  //             filteredPokemons.push(pokes);
-//  //         }
-//  //     }   
-//  // }
-
-//     filteredPokemons = completeDataSet.filter(pokemon => 
-//     //filteredPokemons = data.pokemon.filter(pokemon =>
-//         //revisar con map
-//         activeFilters.reduce(
-//             (accumulator, activeFilter) => 
-//                 pokemon.type.includes(activeFilter)||accumulator,
-//                 false
-//                 //se devuelve un valor false true para filtrar solo los que tienen
-//                 //true que deben ser igual a los que tienen el filtro activo
-//         )
-//     )
-//     // return filteredPokemons;
-//     createCards(filteredPokemons);
-// }
