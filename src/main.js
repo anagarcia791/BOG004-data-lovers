@@ -8,7 +8,7 @@ window.onload = () => {
     let completeDataSet = data.pokemon;
     
     // declaracion variable card para seccion tarjetas
-    let card = document.querySelector('.content-section');
+    let card = document.querySelector('.section-cards');
 
     // funcion para crear tarjetas
     function createCards(datasetToUse){
@@ -81,7 +81,7 @@ window.onload = () => {
     createFilters(completeDataSet)
     
     // declaracion variable filterSection para seccion filtros
-    let filterSection = document.querySelector('.block-filter');
+    let filterSection = document.querySelector('.aside-filter');
 
     // declaracion filterStructure vacia para crear estructura html
     let filterStructure = "";
@@ -106,6 +106,7 @@ window.onload = () => {
             // crea estructura de cada seccion de filtro
             filterStructure+=
             `<section class="filter__item">
+                <h3>Filter by:</h3>
                 <h2>${listkey}</h2>
                 <ul>
                     ${values}
