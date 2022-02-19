@@ -14,16 +14,60 @@ body{
     background-position: center center;
     background-repeat: no-repeat;
 }
+/* estilos main */
 main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 100wh;
-    max-width: 960px;
+    /* max-width: 960px; */
     margin: 0 auto;
     padding: 1%;
 }
-/* estilos seccion card (contiene todas las tarjetas) */
-.content-section{
+/* estilos logo */
+.section-logo{
+    background-color: rgb(17, 16, 16);
     display: flex;
     justify-content: space-evenly;
+}
+/* estilos para seccion de orden */
+.content-order{
+    display: flex;
+    justify-content: flex-end;
+    max-width: 90%;
+}
+/* estilos para seccion que contiene filtros y tarjetas */
+.filter_cards{
+    display: flex;
+    justify-content: center;
+    gap: 3%;
+}
+/* estilos seccion filtros (contiene todos los filtros) */
+.aside-filter{
+    line-height: 1.6;
+}
+/* estilos seccion li hijo de aside-filter */
+.aside-filter li{
+    list-style: none;
+    color:rgb(17, 16, 16) ;
+}
+/* estilos seccion h2 hijo de aside-filter */
+.aside-filter h2{
+    background-color: #FFFFFF;
+}
+/* estilos seccion h2 hijo de aside-filter */
+.aside-filter h2::first-letter{
+    text-transform: uppercase;
+}
+/* estilos seccion ul hijo de aside-filter */
+.aside-filter ul{
+    text-transform: uppercase;
+}
+/* estilos seccion card (contiene todas las tarjetas) */
+.section-cards{
+    display: flex;
+    justify-content: space-evenly;
+    max-width: 80%;
     gap: 30px;
     flex-wrap: wrap;
     overflow: hidden;
@@ -36,6 +80,7 @@ main{
     justify-content: center;
     align-items: center;
     width: 180px; 
+    height: 230px; 
     font-family:"nunito";
     outline: 2px solid #302e2e;
     border-radius: 0.5rem;
@@ -46,7 +91,7 @@ main{
     flex-grow: 0; para no se amplie tamaño
     */
 }
-/* estilos id contenedor hijo */
+/* estilos id contenedor hijo de card */
 .card__id{
     align-self: flex-start;
     text-align: center;
@@ -56,8 +101,7 @@ main{
     font-weight: bold;
     /* border: 1px solid #302e2e; */
     border-radius: 0.3rem;
-    background-color:  #FFA000; /*#f3610c;*/  
-    /* #FFA000 */
+    background-color:  #FFA000; /*#f3610c;*/ 
 }
 .card__character{
     height: 115px;
@@ -81,29 +125,18 @@ main{
     height: 40%;
     width: 100%;
     color: #F4EBEB; 
-    text-transform: uppercase;
-    background-color: rgb(17, 16, 16) ;/*#f55610;*/ /* rgb(17, 16, 16);*/
+    background-color: rgb(17, 16, 16) ; /*#f55610;*/ 
     background-position: 100%;
     border-bottom: 1px solid #302e2e;
     border-bottom-left-radius: 0.5rem;
     border-end-end-radius: 0.5rem;
     padding: 5%;
 }
+/* estilos h3 de informacion de tarjeta*/
+.card__content h3::first-letter{
+    text-transform: uppercase;
+}
 /* estilos icono de tipo contenedor hijo */
 .card__icon{
     width: 15%;
-}
-
-.filter__item{
-    text-transform: uppercase;
-}
-
-ul{
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-}
-
-li{
-    padding-left: 10px;
 }
