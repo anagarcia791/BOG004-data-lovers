@@ -17,7 +17,12 @@ const testData = {
       "type": [
         "ice",
       ],
-    }
+    },
+    {
+      "type": [
+        "dark",
+      ],
+    },
   ]
 }
 
@@ -28,7 +33,7 @@ describe('example', () => {
   });
   it('returns `example` 2', () => {
     const result = filterHandler('poison', true, testData.pokemon);
-    expect(result).toHaveLength(3);
+    expect(result).toHaveLength(2);
   });
   it('returns `example` 3', () => {
     const result = filterHandler('grass', false, testData.pokemon);
@@ -41,5 +46,9 @@ describe('example', () => {
   it('returns `example` 5', () => {
     const result = filterHandler('poison', false, testData.pokemon);
     expect(result).toHaveLength(1);
+  });
+  it('returns `example` 6', () => {
+    const result = filterHandler('ice', false, testData.pokemon);
+    expect(result).toHaveLength(4);
   });
 });
