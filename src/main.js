@@ -9,27 +9,27 @@ window.onload = () => {
     
     // declaracion variable card para seccion tarjetas
     let card = document.querySelector('.section-cards');
-
+    
     // funcion para crear tarjetas
     function createCards(datasetToUse){
         let renderString = "";
         // ciclo for para crear tarjetas
-        for(let character of datasetToUse){
-            // console.log(character);
-            let cardStructure =
+        for(let pokemonCharacter of datasetToUse){
+        //console.log(pokemonCharacter);
+        let cardStructure =
             `<article class="card">
-                <p class="card__id">${character.num}</p>
+                <p class="card__id">${pokemonCharacter.num}</p>
                 <figure class="card__character">
-                    <img class="card__image" src="${character.img}" alt="character card">
+                    <img class="card__image" src="${pokemonCharacter.img}" alt="character card">
                 </figure>
                 <article class="card__content">
-                    <h3 class="card__name">${character.name}</h3>
-                    <p class="card__type">Type: ${character.type.join(" ")}</p>
+                    <h3 class="card__name">${pokemonCharacter.name}</h3>
+                    <p class="card__type">Type: ${pokemonCharacter.type.join(" ")}</p>
                 </article>
             </article>`
             renderString += cardStructure;
         }
-        card.innerHTML = renderString;
+        card.innerHTML = renderString;        
     }
     
     // llamado funcion para crear tarjetas en html
@@ -59,21 +59,23 @@ window.onload = () => {
         for(let pokemonCharacter of datasetToUse){
             // obtiene elementos(tipos-resistencia-debilidad) 
             // para cada seccion de filtros
-            Object.keys(filters).forEach(filter => {
-                // console.log(filters[filter], pokemonCharacter[filter],pokemonCharacter.name);
-                filters[filter] = 
-                addElementsToArray(filters[filter], pokemonCharacter[filter])
+            Object.keys(filters).forEach(filterKey => {
+                // console.log(filters[filterKey], pokemonCharacter[filterKey],pokemonCharacter.name);
+                filters[filterKey] = 
+                addElementsToArray(filters[filterKey], pokemonCharacter[filterKey])
             })
         }
         // console.log(Object.keys(filters));
         // console.log(filters);
-        
+
         // organiza los elementos de cada seccion de filtro por orden alfabetico
-        Object.keys(filters).forEach(filter => {
-            filters[filter].sort(function (a, b) {
+        Object.keys(filters).forEach(filterKey => {
+            // console.log(filters[filterKey]);
+            filters[filterKey].sort(function (a, b) {
                 // console.log(a.localeCompare(b));
                 return a.localeCompare(b);
-            });       
+            }); 
+            // return filters[filterKey].sort()
         }) 
     }
 
@@ -106,8 +108,8 @@ window.onload = () => {
             // crea estructura de cada seccion de filtro
             filterStructure+=
             `<section class="filter__item">
-                <h3>Filter by:</h3>
-                <h2>${listkey}</h2>
+                <h2>Filter by:</h2>
+                <h3>${listkey}</h3>
                 <ul>
                     ${values}
                 </ul>
@@ -125,14 +127,18 @@ window.onload = () => {
     // console.log(filterCheck);   
 
     // ciclo para encontrar los filtros a los que se les aplica check 
-    filterCheck.forEach((element)=>{
+    filterCheck.forEach((checkBox)=>{
         // console.log(element)
-        element.onchange = (event) => {
+        checkBox.onchange = (event) => {
             let filteredPokemonsResult = dataFunctions.filterHandler(event.target.value,event.target.checked);
             createCards(filteredPokemonsResult);
             // console.log(event.target.value, event.target.checked)
             // console.log(filteredPokemons.length)
         };
     })
-
 }
+
+
+
+
+

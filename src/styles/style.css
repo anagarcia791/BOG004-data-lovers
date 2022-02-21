@@ -53,10 +53,10 @@ main{
 }
 /* estilos seccion h2 hijo de aside-filter */
 .aside-filter h2{
-    background-color: #FFFFFF;
+    background-color: #ffffff71;
 }
-/* estilos seccion h2 hijo de aside-filter */
-.aside-filter h2::first-letter{
+/* estilos seccion h3 hijo de aside-filter */
+.aside-filter h3::first-letter{
     text-transform: uppercase;
 }
 /* estilos seccion ul hijo de aside-filter */

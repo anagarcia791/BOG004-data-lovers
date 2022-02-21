@@ -15,21 +15,25 @@ export function filterHandler(filter, checked, data=dataPokemon.pokemon){
 
     // declaracion filteredPokemons dataset que incluye unicamente lo seleccionado
     let filteredPokemons = [];
-    for(let poke of data){
+    for(let pokemonCharacter of data){
         // console.log(pokes);
-        for(let pokeType of poke.type){
-            if(activeFilters.includes(pokeType) && !filteredPokemons.includes(poke)){
-                filteredPokemons.push(poke);
+        for(let pokemonType of pokemonCharacter.type){
+            if(activeFilters.includes(pokemonType) && !filteredPokemons.includes(pokemonCharacter)){
+                filteredPokemons.push(pokemonCharacter);
             }
         }   
     }
     // console.log(filteredPokemons);
-
+    
     // console.log(activeFilters.length);
     // console.log(!activeFilters.length);
     !activeFilters.length 
         ? filteredPokemons = data       // activeFilters.length = 0 true
         : filteredPokemons              // activeFilters.length diferente de 0 false
-
+        
     return filteredPokemons;
 }
+
+
+
+
