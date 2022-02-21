@@ -125,7 +125,7 @@ window.onload = () => {
     // declaracion filterCheck para controlar el evento de check
     let filterCheck = document.querySelectorAll('.filter__check');
     // console.log(filterCheck);   
-
+    
     // ciclo para encontrar los filtros a los que se les aplica check 
     filterCheck.forEach((checkBox)=>{
         // console.log(element)
@@ -134,8 +134,22 @@ window.onload = () => {
             createCards(filteredPokemonsResult);
             // console.log(event.target.value, event.target.checked)
             // console.log(filteredPokemons.length)
+            let sortedNamesResult = dataFunctions.sortNameHandler(filteredPokemonsResult);
+            createCards(sortedNamesResult);
         };
+        
     })
+    
+    
+    function sortedNameOpt(){
+        let sortedNamesResult1 = dataFunctions.sortNameHandler(completeDataSet);
+        createCards(sortedNamesResult1);
+        console.log('lo que sea');
+    }
+    let optAsc = document.querySelector('#letterAsc');
+    optAsc.addEventListener('click', sortedNameOpt());
+
+    
 }
 
 

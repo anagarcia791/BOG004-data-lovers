@@ -16,7 +16,7 @@ export function filterHandler(filter, checked, data=dataPokemon.pokemon){
     // declaracion filteredPokemons dataset que incluye unicamente lo seleccionado
     let filteredPokemons = [];
     for(let pokemonCharacter of data){
-        // console.log(pokes);
+        // console.log(pokemonCharacter);
         for(let pokemonType of pokemonCharacter.type){
             if(activeFilters.includes(pokemonType) && !filteredPokemons.includes(pokemonCharacter)){
                 filteredPokemons.push(pokemonCharacter);
@@ -33,6 +33,26 @@ export function filterHandler(filter, checked, data=dataPokemon.pokemon){
         
     return filteredPokemons;
 }
+
+export function sortNameHandler(datasetToUse){
+
+    const copyDatasetToUse = [...datasetToUse];
+    
+    function sortName(pokemonName1,pokemonName2){
+        return pokemonName1.name.localeCompare(pokemonName2.name);    
+        // if (pokemonName1.name < pokemonName2.name) {return -1;}
+        // if (pokemonName1.name > pokemonName2.name) {return 1;}
+        // return 0;
+    }
+
+    var sortedNames = copyDatasetToUse.sort(sortName);
+    console.log(sortedNames);
+    return sortedNames
+} 
+
+
+
+
 
 
 
