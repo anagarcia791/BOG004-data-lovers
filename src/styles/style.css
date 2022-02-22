@@ -31,10 +31,15 @@ main{
     justify-content: space-evenly;
 }
 /* estilos para seccion de orden */
-.content-order{
+.content-sort{
     display: flex;
     justify-content: flex-end;
     max-width: 90%;
+    gap: 1%;
+}
+/* estilos seccion h2 hijo de content-sort */
+.content-sort h2{
+    background-color: #ffffff71;
 }
 /* estilos para seccion que contiene filtros y tarjetas */
 .filter_cards{
