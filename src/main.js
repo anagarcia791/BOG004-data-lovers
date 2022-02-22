@@ -127,23 +127,23 @@ window.onload = () => {
         // declaracion sortOption para evento orden
         let sortOption = document.querySelector('.sort__option');
         sortOption.addEventListener('click', ()=>{
-            let prueb = sortOption.value;
+            let optionValue = sortOption.value;
             // console.log(prueb);
             let sortedNamesResult1;
             switch (true) {
-                case (prueb === "letterAsc") :
+                case (optionValue === "nameAsc") :
                     sortedNamesResult1 = dataFunctions.sortNameAzHandler(datasetToUse);
                     return createCards(sortedNamesResult1);
                     break;
-                case (prueb === "letterDes") :
+                case (optionValue === "nameDes") :
                     sortedNamesResult1 = dataFunctions.sortNameZaHandler(datasetToUse);
                     return createCards(sortedNamesResult1);
                     break;
-                case (prueb === "numAsc") :
+                case (optionValue === "numAsc") :
                     sortedNamesResult1 = dataFunctions.sortNumAscHandler(datasetToUse);
                     return createCards(sortedNamesResult1);
                     break;
-                case (prueb === "numDes") :
+                case (optionValue === "numDes") :
                     sortedNamesResult1 = dataFunctions.sortNumDesHandler(datasetToUse);
                     return createCards(sortedNamesResult1);
                     break;
