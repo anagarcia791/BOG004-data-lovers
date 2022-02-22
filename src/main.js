@@ -121,10 +121,39 @@ window.onload = () => {
     
     // llamado funcion para crear estructura de filtros en html 
     createFiltersStructure(filters)
+    
+    // funcion para mostrar informacion organizada de acuerdo a la seleccion
+    function selectedSortOption(datasetToUse){
+        // declaracion sortOption para evento orden
+        let sortOption = document.querySelector('.sort__option');
+        sortOption.addEventListener('click', ()=>{
+            let prueb = sortOption.value;
+            // console.log(prueb);
+            let sortedNamesResult1;
+            switch (true) {
+                case (prueb === "letterAsc") :
+                    sortedNamesResult1 = dataFunctions.sortNameAzHandler(datasetToUse);
+                    return createCards(sortedNamesResult1);
+                    break;
+                case (prueb === "letterDes") :
+                    sortedNamesResult1 = dataFunctions.sortNameZaHandler(datasetToUse);
+                    return createCards(sortedNamesResult1);
+                    break;
+                case (prueb === "numAsc") :
+                    sortedNamesResult1 = dataFunctions.sortNumAscHandler(datasetToUse);
+                    return createCards(sortedNamesResult1);
+                    break;
+                case (prueb === "numDes") :
+                    sortedNamesResult1 = dataFunctions.sortNumDesHandler(datasetToUse);
+                    return createCards(sortedNamesResult1);
+                    break;
+            }
+        })
+    }
 
     // declaracion filterCheck para controlar el evento de check
     let filterCheck = document.querySelectorAll('.filter__check');
-    // console.log(filterCheck);   
+    // console.log(filterCheck);
     
     // ciclo para encontrar los filtros a los que se les aplica check 
     filterCheck.forEach((checkBox)=>{
@@ -134,25 +163,12 @@ window.onload = () => {
             createCards(filteredPokemonsResult);
             // console.log(event.target.value, event.target.checked)
             // console.log(filteredPokemons.length)
-            let sortedNamesResult = dataFunctions.sortNameHandler(filteredPokemonsResult);
-            createCards(sortedNamesResult);
+            selectedSortOption(filteredPokemonsResult);
         };
         
     })
-    
-    
-    function sortedNameOpt(){
-        let sortedNamesResult1 = dataFunctions.sortNameHandler(completeDataSet);
-        createCards(sortedNamesResult1);
-        console.log('lo que sea');
-    }
-    let optAsc = document.querySelector('#letterAsc');
-    optAsc.addEventListener('click', sortedNameOpt());
 
+    // llamado funcion para mostrar informacion organizada de acuerdo a la seleccion para toda la data
+    selectedSortOption(completeDataSet);
     
 }
-
-
-
-
-
