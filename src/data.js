@@ -4,6 +4,7 @@ import dataPokemon from './data/pokemon/pokemon.js';
 // declaracion activeFilters para adicionar el valor de los filtros seleccionados 
 let activeFilters = [];
 
+// funcion para filtrar por tipo de pokemon
 export function filterHandler(filter, checked, data=dataPokemon.pokemon){
     // console.log(filter,checked);
     activeFilters = 
@@ -34,8 +35,8 @@ export function filterHandler(filter, checked, data=dataPokemon.pokemon){
     return filteredPokemons;
 }
 
-export function sortNameHandler(datasetToUse){
-
+// funcion para ordenar de la A a la Z
+export function sortNameAzHandler(datasetToUse){
     const copyDatasetToUse = [...datasetToUse];
     
     function sortName(pokemonName1,pokemonName2){
@@ -45,15 +46,46 @@ export function sortNameHandler(datasetToUse){
         // return 0;
     }
 
-    var sortedNames = copyDatasetToUse.sort(sortName);
-    console.log(sortedNames);
-    return sortedNames
+    var sortedNamesAz = copyDatasetToUse.sort(sortName);
+    // console.log(sortedNamesAz);
+    return sortedNamesAz;
+}
+
+// funcion para ordenar de la Z a la A
+export function sortNameZaHandler(datasetToUse){
+    const copyDatasetToUse = [...datasetToUse];
+    
+    function sortName(pokemonName1,pokemonName2){
+        return pokemonName2.name.localeCompare(pokemonName1.name);  
+    }
+
+    var sortedNamesZa = copyDatasetToUse.sort(sortName);
+    // console.log(sortedNamesZa);
+    return sortedNamesZa;
 } 
 
+// funcion para ordenar de 0 a ...
+export function sortNumAscHandler(datasetToUse){
+    const copyDatasetToUse = [...datasetToUse];
+    
+    function sortNum(pokemonNum1,pokemonNum2){
+        return pokemonNum1.num.localeCompare(pokemonNum2.num);    
+    }
 
+    var sortedNumAsc = copyDatasetToUse.sort(sortNum);
+    // console.log(sortedNumAsc);
+    return sortedNumAsc;
+}
 
+// funcion para ordenar de 100 a ...
+export function sortNumDesHandler(datasetToUse){
+    const copyDatasetToUse = [...datasetToUse];
+    
+    function sortNum(pokemonNum1,pokemonNum2){
+        return pokemonNum2.num.localeCompare(pokemonNum1.num);    
+    }
 
-
-
-
-
+    var sortedNumDes = copyDatasetToUse.sort(sortNum);
+    // console.log(sortedNumDes);
+    return sortedNumDes;
+}
