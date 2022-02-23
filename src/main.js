@@ -171,4 +171,5 @@ window.onload = () => {
     // llamado funcion para mostrar informacion organizada de acuerdo a la seleccion para toda la data
     selectedSortOption(completeDataSet);
     
+    dataFunctions.addStatsToObject(completeDataSet);
 }

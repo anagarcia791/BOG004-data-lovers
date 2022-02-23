@@ -46,7 +46,7 @@ export function sortNameAzHandler(datasetToUse){
         // return 0;
     }
 
-    var sortedNamesAz = copyDatasetToUse.sort(sortName);
+    let sortedNamesAz = copyDatasetToUse.sort(sortName);
     // console.log(sortedNamesAz);
     return sortedNamesAz;
 }
@@ -59,7 +59,7 @@ export function sortNameZaHandler(datasetToUse){
         return pokemonName2.name.localeCompare(pokemonName1.name);  
     }
 
-    var sortedNamesZa = copyDatasetToUse.sort(sortName);
+    let sortedNamesZa = copyDatasetToUse.sort(sortName);
     // console.log(sortedNamesZa);
     return sortedNamesZa;
 } 
@@ -72,7 +72,7 @@ export function sortNumAscHandler(datasetToUse){
         return pokemonNum1.num.localeCompare(pokemonNum2.num);    
     }
 
-    var sortedNumAsc = copyDatasetToUse.sort(sortNum);
+    let sortedNumAsc = copyDatasetToUse.sort(sortNum);
     // console.log(sortedNumAsc);
     return sortedNumAsc;
 }
@@ -85,7 +85,30 @@ export function sortNumDesHandler(datasetToUse){
         return pokemonNum2.num.localeCompare(pokemonNum1.num);    
     }
 
-    var sortedNumDes = copyDatasetToUse.sort(sortNum);
+    let sortedNumDes = copyDatasetToUse.sort(sortNum);
     // console.log(sortedNumDes);
     return sortedNumDes;
+}
+
+// funcion para agregar suma  y promedio de stats al objeto
+export function addStatsToObject(datasetToUse){
+    const copyDatasetToUse = [...datasetToUse];
+    
+    for(let pokemonCharacter of copyDatasetToUse){
+        let attack = parseInt(pokemonCharacter.stats['base-attack']);
+        let defense = parseInt(pokemonCharacter.stats['base-defense']);
+        let stamina = parseInt(pokemonCharacter.stats['base-stamina']);
+        let sumStats = attack+defense+stamina;
+        let meanStats = Math.round((attack+defense+stamina)/3);
+        let source = {
+            "sum-stats": sumStats,
+            "mean-stats": meanStats,
+        }
+        let modifiedObject = Object.assign(pokemonCharacter,source);
+        return modifiedObject
+    }
+    console.log('hola');
+    // console.log("Objeto original", datasetToUse);
+    // console.log("Copia del objeto", copyDatasetToUse);
+    
 }
