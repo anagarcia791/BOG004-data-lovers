@@ -27,8 +27,18 @@ main{
 .section-logo{
     background-color: rgb(17, 16, 16);
     display: flex;
-    justify-content: space-evenly;
-    height: 25vh;
+    justify-content: center;
+    align-items: center;
+    /* justify-content: space-evenly;  */
+    height: 35vh;
+}
+
+.icon{
+    height: 45vh;
+}
+
+.logo{
+    height: 30vh;
 }
 /* estilos para seccion de orden */
 .content-sort{
