@@ -17,23 +17,24 @@ body{
 /* estilos main */
 main{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100wh;
-    /* max-width: 960px; */
+    flex-wrap: wrap;
+    width: 100vw;
+    max-width: 90%;
     margin: 0 auto;
-    padding: 1%;
+    padding-top: 28px;
 }
 /* estilos logo */
 .section-logo{
     background-color: rgb(17, 16, 16);
     display: flex;
     justify-content: space-evenly;
+    height: 25vh;
 }
 /* estilos para seccion de orden */
 .content-sort{
     display: flex;
     justify-content: flex-end;
+    width: 100%;
     max-width: 90%;
     gap: 1%;
 }
@@ -41,15 +42,15 @@ main{
 .content-sort h2{
     background-color: #ffffff71;
 }
-/* estilos para seccion que contiene filtros y tarjetas */
-.filter_cards{
-    display: flex;
-    justify-content: center;
-    gap: 3%;
-}
 /* estilos seccion filtros (contiene todos los filtros) */
 .aside-filter{
+    position: sticky;
+    align-self: flex-start;
     line-height: 1.6;
+    width: 15%;
+    left: 0;
+    top: 40px;
+    z-index: 1;
 }
 /* estilos seccion li hijo de aside-filter */
 .aside-filter li{
@@ -72,7 +73,10 @@ main{
 .section-cards{
     display: flex;
     justify-content: space-evenly;
-    max-width: 80%;
+    align-items: flex-start;
+    width: 85%;
+    overflow: scroll;
+    max-width: 90%;
     gap: 30px;
     flex-wrap: wrap;
     overflow: hidden;
@@ -80,17 +84,18 @@ main{
 }
 /* estilos tarjeta contenedor padre */
 .card{
+    position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     width: 180px; 
-    height: 230px; 
     font-family:"nunito";
     outline: 2px solid #302e2e;
     border-radius: 0.5rem;
     box-shadow: 0 1px 4px 2px rgba(0,0,0, 0.2);
     background-image: url(../assets/images/Background_Card.png);
+    /* justify-content: center; */
+    /* height: 320px;  */
     /* margin: 10px; 
     flex-shrink: 0; para no se reduzca tamaño
     flex-grow: 0; para no se amplie tamaño
@@ -100,11 +105,10 @@ main{
 .card__id{
     align-self: flex-start;
     text-align: center;
-    height: 28px;
+    height: 25px;
     width: 42px;
     margin: 5px;
     font-weight: bold;
-    /* border: 1px solid #302e2e; */
     border-radius: 0.3rem;
     background-color:  #FFA000; /*#f3610c;*/ 
 }
@@ -123,19 +127,21 @@ main{
 }
 /* estilos informacion de tarjeta contenedor hijo */
 .card__content{
+    justify-self: end;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start; 
-    height: 40%;
+    height: 160px;
     width: 100%;
     color: #F4EBEB; 
     background-color: rgb(17, 16, 16) ; /*#f55610;*/ 
     background-position: 100%;
-    border-bottom: 1px solid #302e2e;
+    /* border-radius: 0.5rem; */
+    /* border-bottom: 1px solid #302e2e; */
     border-bottom-left-radius: 0.5rem;
     border-end-end-radius: 0.5rem;
-    padding: 5%;
+    padding: 20px;
 }
 /* estilos h3 de informacion de tarjeta*/
 .card__content h3::first-letter{
