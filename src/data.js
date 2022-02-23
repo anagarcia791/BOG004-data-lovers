@@ -1,11 +1,27 @@
-// importacion data y funciones data.js
-import dataPokemon from './data/pokemon/pokemon.js';
+// funcion para agregar suma y promedio de stats al objeto copia de data
+export function addStatsToObject(datasetToUse){
+    let newDataPokemon = JSON.parse(JSON.stringify(datasetToUse));
+
+    newDataPokemon.forEach((pokemonCharacter, index) => {
+        let attack = parseInt(pokemonCharacter.stats['base-attack']);
+        let defense = parseInt(pokemonCharacter.stats['base-defense']);
+        let stamina = parseInt(pokemonCharacter.stats['base-stamina']);
+        let sumStats = attack+defense+stamina;
+        let meanStats = Math.round((attack+defense+stamina)/3);
+        let source = {
+            "sum-stats": sumStats,
+            "mean-stats": meanStats,
+        }
+        newDataPokemon[index] = Object.assign(pokemonCharacter,source);
+    });
+    return newDataPokemon
+}
 
 // declaracion activeFilters para adicionar el valor de los filtros seleccionados 
 let activeFilters = [];
 
 // funcion para filtrar por tipo de pokemon
-export function filterHandler(filter, checked, data=dataPokemon.pokemon){
+export function filterHandler(filter, checked, data){    
     // console.log(filter,checked);
     activeFilters = 
         checked
@@ -88,27 +104,4 @@ export function sortNumDesHandler(datasetToUse){
     let sortedNumDes = copyDatasetToUse.sort(sortNum);
     // console.log(sortedNumDes);
     return sortedNumDes;
-}
-
-// funcion para agregar suma  y promedio de stats al objeto
-export function addStatsToObject(datasetToUse){
-    const copyDatasetToUse = [...datasetToUse];
-    
-    for(let pokemonCharacter of copyDatasetToUse){
-        let attack = parseInt(pokemonCharacter.stats['base-attack']);
-        let defense = parseInt(pokemonCharacter.stats['base-defense']);
-        let stamina = parseInt(pokemonCharacter.stats['base-stamina']);
-        let sumStats = attack+defense+stamina;
-        let meanStats = Math.round((attack+defense+stamina)/3);
-        let source = {
-            "sum-stats": sumStats,
-            "mean-stats": meanStats,
-        }
-        let modifiedObject = Object.assign(pokemonCharacter,source);
-        return modifiedObject
-    }
-    console.log('hola');
-    // console.log("Objeto original", datasetToUse);
-    // console.log("Copia del objeto", copyDatasetToUse);
-    
 }
