@@ -4,8 +4,12 @@ import data from './data/pokemon/pokemon.js';
 import * as dataFunctions from './data.js';
 
 window.onload = () => {
+
     // declaracion variables uso global
-    let completeDataSet = data.pokemon;
+    let copyDatasetToUse = JSON.parse(JSON.stringify(data.pokemon));
+    let completeDataSet = dataFunctions.addStatsToObject(copyDatasetToUse);
+    // console.log("a",copyDatasetToUse);
+    // console.log("b",completeDataSet);
     
     // declaracion variable card para seccion tarjetas
     let card = document.querySelector('.section-cards');
@@ -25,6 +29,8 @@ window.onload = () => {
                 <article class="card__content">
                     <h3 class="card__name">${pokemonCharacter.name}</h3>
                     <p class="card__type">Type: ${pokemonCharacter.type.join(" ")}</p>
+                    <p class="card__type">Power: ${pokemonCharacter["sum-stats"]}</p>
+                    <p class="card__type">Mean power: ${pokemonCharacter["mean-stats"]}</p>
                 </article>
             </article>`
             renderString += cardStructure;
@@ -159,7 +165,7 @@ window.onload = () => {
     filterCheck.forEach((checkBox)=>{
         // console.log(element)
         checkBox.onchange = (event) => {
-            let filteredPokemonsResult = dataFunctions.filterHandler(event.target.value,event.target.checked);
+            let filteredPokemonsResult = dataFunctions.filterHandler(event.target.value,event.target.checked,completeDataSet);
             createCards(filteredPokemonsResult);
             // console.log(event.target.value, event.target.checked)
             // console.log(filteredPokemons.length)
@@ -170,6 +176,4 @@ window.onload = () => {
 
     // llamado funcion para mostrar informacion organizada de acuerdo a la seleccion para toda la data
     selectedSortOption(completeDataSet);
-    
-    dataFunctions.addStatsToObject(completeDataSet);
 }
