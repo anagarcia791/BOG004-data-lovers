@@ -80,10 +80,12 @@ main{
 /* estilos seccion h2 hijo de content-sort */
 .content-sort h2{
     background-color: #ffffff71;
+    color:rgb(17, 16, 16);
 }
 /* estilos seccion filtros (contiene todos los filtros) */
 .aside-filter{
     background-color: #ffffff71;
+    color:rgb(17, 16, 16);
     position: sticky;
     align-self: flex-start;
     font-family:"nunito";
