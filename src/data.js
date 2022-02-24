@@ -102,6 +102,6 @@ export function sortNumDesHandler(datasetToUse){
     }
 
     let sortedNumDes = copyDatasetToUse.sort(sortNum);
-    // console.log(sortedNumDes);
+    console.log(sortedNumDes);
     return sortedNumDes;
 }
