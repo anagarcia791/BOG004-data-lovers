@@ -1,57 +1,65 @@
-import { addStatsToObject,filterHandler,sortNameAzHandler,sortNameZaHandler,sortNumAscHandler,sortNumDesHandler } from '../src/data.js';
+import {addStatsToObject,filterHandler,sortNameAzHandler,sortNameZaHandler,sortNumAscHandler,sortNumDesHandler} from '../src/data.js';
 
-//data de prueba
+// data de prueba
+const bulbasaur = {
+  "num": "001",
+  "name": "bulbasaur",
+  "type": [
+    "grass",
+    "poison"
+  ],
+  "stats": {
+    "base-attack": "118",
+    "base-defense": "111",
+    "base-stamina": "128",
+  },
+};
+
+const ivysaur = {
+  "num": "002",
+  "name": "ivysaur",
+  "type": [
+    "poison"
+  ],
+  "stats": {
+    "base-attack": "1",
+    "base-defense": "2",
+    "base-stamina": "3",
+  },
+};
+
+const picachu = {
+  "num": "003",
+  "name": "picachu",
+  "type": [
+    "ice",
+  ],
+  "stats": {
+    "base-attack": "4",
+    "base-defense": "5",
+    "base-stamina": "6",
+  },
+};
+
+const charmander ={
+  "num": "004",
+  "name": "charmander",
+  "type": [
+    "dark",
+  ],
+  "stats": {
+    "base-attack": "7",
+    "base-defense": "8",
+    "base-stamina": "9",
+  },
+};
+
 const testData = {
   pokemon: [
-    {
-      "num": "001",
-      "name": "bulbasaur",
-      "type": [
-        "grass",
-        "poison"
-      ],
-      "stats": {
-        "base-attack": "118",
-        "base-defense": "111",
-        "base-stamina": "128",
-      },
-    },
-    {
-      "num": "002",
-      "name": "ivysaur",
-      "type": [
-        "poison"
-      ],
-      "stats": {
-        "base-attack": "1",
-        "base-defense": "2",
-        "base-stamina": "3",
-      },
-    },
-    {
-      "num": "003",
-      "name": "picachu",
-      "type": [
-        "ice",
-      ],
-      "stats": {
-        "base-attack": "4",
-        "base-defense": "5",
-        "base-stamina": "6",
-      },
-    },
-    {
-      "num": "004",
-      "name": "charmander",
-      "type": [
-        "dark",
-      ],
-      "stats": {
-        "base-attack": "7",
-        "base-defense": "8",
-        "base-stamina": "9",
-      },
-    },
+    ivysaur,
+    bulbasaur,
+    picachu,
+    charmander,
   ]
 }
 
@@ -64,59 +72,22 @@ describe('adding stats', () => {
     const result1 = addStatsToObject(testData.pokemon);
     addResult = [
       {
-        "num": "001",
-        "name": "bulbasaur",
-        "type": [
-          "grass",
-          "poison"
-        ],
-        "stats": {
-          "base-attack": "118",
-          "base-defense": "111",
-          "base-stamina": "128",
-        },
-        "sum-stats": 357,
-        "mean-stats": 119,
-      },
-      {
-        "num": "002",
-        "name": "ivysaur",
-        "type": [
-          "poison"
-        ],
-        "stats": {
-          "base-attack": "1",
-          "base-defense": "2",
-          "base-stamina": "3",
-        },
+        ...ivysaur,
         "sum-stats": 6,
         "mean-stats": 2,
       },
       {
-        "num": "003",
-        "name": "picachu",
-        "type": [
-          "ice",
-        ],
-        "stats": {
-          "base-attack": "4",
-          "base-defense": "5",
-          "base-stamina": "6",
-        },
+        ...bulbasaur,
+        "sum-stats": 357,
+        "mean-stats": 119,
+      },
+      {
+        ...picachu,
         "sum-stats": 15,
         "mean-stats": 5,
       },
       {
-        "num": "004",
-        "name": "charmander",
-        "type": [
-          "dark",
-        ],
-        "stats": {
-          "base-attack": "7",
-          "base-defense": "8",
-          "base-stamina": "9",
-        },
+        ...charmander,
         "sum-stats": 24,
         "mean-stats": 8,
       },      
@@ -159,59 +130,22 @@ describe('sort AZ', () => {
     const result3 = sortNameAzHandler( addResult);
     const resultAz = [
       {
-        "num": "001",
-        "name": "bulbasaur",
-        "type": [
-          "grass",
-          "poison"
-        ],
-        "stats": {
-          "base-attack": "118",
-          "base-defense": "111",
-          "base-stamina": "128",
-        },
+        ...bulbasaur,
         "sum-stats": 357,
         "mean-stats": 119,
       },
       {
-        "num": "004",
-        "name": "charmander",
-        "type": [
-          "dark",
-        ],
-        "stats": {
-          "base-attack": "7",
-          "base-defense": "8",
-          "base-stamina": "9",
-        },
+        ...charmander,
         "sum-stats": 24,
         "mean-stats": 8,
       },
       {
-        "num": "002",
-        "name": "ivysaur",
-        "type": [
-          "poison"
-        ],
-        "stats": {
-          "base-attack": "1",
-          "base-defense": "2",
-          "base-stamina": "3",
-        },
+        ...ivysaur,
         "sum-stats": 6,
         "mean-stats": 2,
       },
       {
-        "num": "003",
-        "name": "picachu",
-        "type": [
-          "ice",
-        ],
-        "stats": {
-          "base-attack": "4",
-          "base-defense": "5",
-          "base-stamina": "6",
-        },
+        ...picachu,
         "sum-stats": 15,
         "mean-stats": 5,
       },
@@ -226,59 +160,22 @@ describe('sort ZA', () => {
     const result4 = sortNameZaHandler(addResult);
     const resultZa = [
       {
-        "num": "003",
-        "name": "picachu",
-        "type": [
-          "ice",
-        ],
-        "stats": {
-          "base-attack": "4",
-          "base-defense": "5",
-          "base-stamina": "6",
-        },
+        ...picachu,
         "sum-stats": 15,
         "mean-stats": 5,
       },
       {
-        "num": "002",
-        "name": "ivysaur",
-        "type": [
-          "poison"
-        ],
-        "stats": {
-          "base-attack": "1",
-          "base-defense": "2",
-          "base-stamina": "3",
-        },
+        ...ivysaur,
         "sum-stats": 6,
         "mean-stats": 2,
       },
       {
-        "num": "004",
-        "name": "charmander",
-        "type": [
-          "dark",
-        ],
-        "stats": {
-          "base-attack": "7",
-          "base-defense": "8",
-          "base-stamina": "9",
-        },
+        ...charmander,
         "sum-stats": 24,
         "mean-stats": 8,
       },
       {
-        "num": "001",
-        "name": "bulbasaur",
-        "type": [
-          "grass",
-          "poison"
-        ],
-        "stats": {
-          "base-attack": "118",
-          "base-defense": "111",
-          "base-stamina": "128",
-        },
+        ...bulbasaur,
         "sum-stats": 357,
         "mean-stats": 119,
       },
@@ -293,62 +190,25 @@ describe('sort numAsc', () => {
     const result5 = sortNumAscHandler(addResult);
     const resultNumAsc = [
       {
-        "num": "001",
-        "name": "bulbasaur",
-        "type": [
-          "grass",
-          "poison"
-        ],
-        "stats": {
-          "base-attack": "118",
-          "base-defense": "111",
-          "base-stamina": "128",
-        },
+        ...bulbasaur,
         "sum-stats": 357,
         "mean-stats": 119,
       },
       {
-        "num": "002",
-        "name": "ivysaur",
-        "type": [
-          "poison"
-        ],
-        "stats": {
-          "base-attack": "1",
-          "base-defense": "2",
-          "base-stamina": "3",
-        },
+        ...ivysaur,
         "sum-stats": 6,
         "mean-stats": 2,
       },
       {
-        "num": "003",
-        "name": "picachu",
-        "type": [
-          "ice",
-        ],
-        "stats": {
-          "base-attack": "4",
-          "base-defense": "5",
-          "base-stamina": "6",
-        },
+        ...picachu,
         "sum-stats": 15,
         "mean-stats": 5,
       },
       {
-        "num": "004",
-        "name": "charmander",
-        "type": [
-          "dark",
-        ],
-        "stats": {
-          "base-attack": "7",
-          "base-defense": "8",
-          "base-stamina": "9",
-        },
+        ...charmander,
         "sum-stats": 24,
         "mean-stats": 8,
-      },      
+      },        
     ]
     expect(result5).toEqual(resultNumAsc);
   });
@@ -360,62 +220,25 @@ describe('sort numDes', () => {
     const result6 = sortNumDesHandler(addResult);
     const resultNumDes = [
       {
-        "num": "004",
-        "name": "charmander",
-        "type": [
-          "dark",
-        ],
-        "stats": {
-          "base-attack": "7",
-          "base-defense": "8",
-          "base-stamina": "9",
-        },
+        ...charmander,
         "sum-stats": 24,
         "mean-stats": 8,
       },
       {
-        "num": "003",
-        "name": "picachu",
-        "type": [
-          "ice",
-        ],
-        "stats": {
-          "base-attack": "4",
-          "base-defense": "5",
-          "base-stamina": "6",
-        },
+        ...picachu,
         "sum-stats": 15,
         "mean-stats": 5,
       },
       {
-        "num": "002",
-        "name": "ivysaur",
-        "type": [
-          "poison"
-        ],
-        "stats": {
-          "base-attack": "1",
-          "base-defense": "2",
-          "base-stamina": "3",
-        },
+        ...ivysaur,
         "sum-stats": 6,
         "mean-stats": 2,
       },
       {
-        "num": "001",
-        "name": "bulbasaur",
-        "type": [
-          "grass",
-          "poison"
-        ],
-        "stats": {
-          "base-attack": "118",
-          "base-defense": "111",
-          "base-stamina": "128",
-        },
+        ...bulbasaur,
         "sum-stats": 357,
         "mean-stats": 119,
-      },    
+      },
     ]
     expect(result6).toEqual(resultNumDes);
   });
