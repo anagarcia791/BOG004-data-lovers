@@ -140,19 +140,15 @@ window.onload = () => {
                 case (optionValue === "nameAsc") :
                     sortedNamesResult1 = dataFunctions.sortNameAzHandler(datasetToUse);
                     return createCards(sortedNamesResult1);
-                    break;
                 case (optionValue === "nameDes") :
                     sortedNamesResult1 = dataFunctions.sortNameZaHandler(datasetToUse);
                     return createCards(sortedNamesResult1);
-                    break;
                 case (optionValue === "numAsc") :
                     sortedNamesResult1 = dataFunctions.sortNumAscHandler(datasetToUse);
                     return createCards(sortedNamesResult1);
-                    break;
                 case (optionValue === "numDes") :
                     sortedNamesResult1 = dataFunctions.sortNumDesHandler(datasetToUse);
                     return createCards(sortedNamesResult1);
-                    break;
             }
         })
     }
