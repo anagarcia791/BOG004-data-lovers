@@ -81,7 +81,7 @@ window.onload = () => {
                 // console.log(a.localeCompare(b));
                 return a.localeCompare(b);
             }); 
-            // return filters[filterKey].sort()
+            // return filters[filterKey].sort() opcion para no usar de las lineas 80 a 83
         }) 
     }
 
