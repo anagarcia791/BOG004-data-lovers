@@ -1,34 +1,46 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poke Lovers</title>
     <link rel="icon" href="assets/images/Pokeicon.png">
-    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="./styles/style.css"/>
     <link rel="stylesheet" href="./styles/tablet.css" media="(min-width: 680px)"/>
-    <link rel="stylesheet" href="./styles/desktop.css" media="(min-width: 1024px)"/>
+    <link rel="stylesheet" href="./styles/desktop.css" media="(min-width: 1000px)"/>
     <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=Nunito:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/3485eef86c.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
+    <!-- creacion div para fondo blur con filtros en mobile -->
+    <div class="backdrop"></div>
+    
     <!-- creacion seccion header -->
     <header class="section-header">
       <div class="content-logo">
-        <div class="content-icon">
-          <img class="icon" src="assets/images/Pokeicon.png" alt="ICON_POKE_LOVER"> 
+        <div>
+          <div class="content-icon">
+            <img class="icon" src="assets/images/Pokeicon.png" alt="ICON_POKE_LOVER">
+          </div>
+          <img class="logo" src="assets/images/LOGO_POKE_LOVER_600x230.png" alt="LOGO_POKE_LOVER">
         </div>
-        <img class="logo" src="assets/images/LOGO_POKE_LOVER_600x230.png" alt="LOGO_POKE_LOVER">
       </div>  
-      <div class="content2-logo">
-      </div> 
     </header>
 
     <main>
       <!-- creacion seccion orden -->
-      <section class="content-sort">
-        <h2>Sort By</h2>
-        <select class="sort__option">
-          <option value="numAsc" selected>0-99...</option>
+      <section class="options-bar">
+        <button id="filterOption" class="buttton-1">
+          <span>Filter by:</span>
+          <i class="fa-solid fa-angle-down"></i>
+        </button>
+
+        <select id="sortOption" class="buttton-1">
+          <option value="sortBy" selected style="display:none;">Sort By</option>
+          <option value="numAsc">0-99...</option>
           <option value="numDes">...99-0</option>
           <option value="nameAsc">A-Z</option>
           <option value="nameDes">Z-A</option>
