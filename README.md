@@ -54,15 +54,15 @@ y los Criterios de Aceptación.
 
 ### Prototipo de baja fidelidad
 
-![Sketch](sketch.jpg)
+![Sketch](src/assets/images/sketch.jpg)
 
 ### Prototipo de alta fidelidad
 
-![Tarjeta](Tarjeta_2.jpeg)
+![Tarjeta](src/assets/images/Tarjeta_2.jpeg)
 
-![Mobil](Mobil_prototype.png)
+![Mobil](src/assets/images/Mobil_prototype.png)
 
-![Desktop](Desktop_prototype.png)
+![Desktop](src/assets/images/Desktop_prototype.png)
 
 ### Implementación de la Interfaz de Usuario (HTML/CSS/JS)
 
