@@ -113,13 +113,18 @@ window.onload = () => {
             })
             // crea estructura de cada seccion de filtro
             filterStructure+=
-            `<section class="filter__item">
+            `<div class="filter__close">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+            <div class="filter__content">
                 <h2>Filter by:</h2>
-                <h3>${listkey}</h3>
-                <ul>
-                    ${values}
-                </ul>
-            </section>`
+                <section class="filter__item">
+                    <h3>${listkey}</h3>
+                    <ul>
+                        ${values}
+                    </ul>
+                </section>
+            </div>`
         }
         // inserta estructura filtros
         filterSection.innerHTML = filterStructure;
@@ -131,7 +136,7 @@ window.onload = () => {
     // funcion para mostrar informacion organizada de acuerdo a la seleccion
     function selectedSortOption(datasetToUse){
         // declaracion sortOption para evento orden
-        let sortOption = document.querySelector('.sort__option');
+        let sortOption = document.querySelector('#sortOption');
         sortOption.addEventListener('click', ()=>{
             let optionValue = sortOption.value;
             // console.log(prueb);
@@ -168,7 +173,30 @@ window.onload = () => {
             selectedSortOption(filteredPokemonsResult);
         };
         
-    })
+    });
+
+    // declaracion backdrop para fondo blur con filtros en mobile
+    let backdrop = document.querySelector('.backdrop');
+    // declaracion filterOption para de click al boton y poder seleccionar filtro
+    let filterOption = document.querySelector('#filterOption');
+    filterOption.addEventListener('click',()=>{
+        backdrop.style.display= "block";
+        filterSection.style.display= "block";
+        document.body.style.scroll = "hidden";
+    });
+
+    // declaracion filterClose para evento de cierre de boton en version mobile
+    let filterClose = document.querySelector('.filter__close'); 
+    filterClose.addEventListener('click',()=>{
+        backdrop.style.display= "none";
+        filterSection.style.display= "";
+    });
+
+    // evento de cierre de filtro dando click en la parte de backdrop
+    backdrop.addEventListener('click',()=>{
+        backdrop.style.display= "none";
+        filterSection.style.display= "";
+    });
 
     // llamado funcion para mostrar informacion organizada de acuerdo a la seleccion para toda la data
     selectedSortOption(completeDataSet);
