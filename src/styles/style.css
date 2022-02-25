@@ -54,19 +54,16 @@ body{
 .content-icon{
     display: flex;
     width: 15vw;
-    z-index: 3;
 }
 /* estilos icono de header */
 .content-icon img{
     object-fit: cover;
     width: 100%;
     height: 100%;
-    z-index: 3;
 }
 /* estilos logo de header */
 .logo{
     width: 60vw;
-    z-index: 3;
 }
 /* estilos main */
 main{
@@ -119,18 +116,13 @@ main{
     background-color: #ffffff;
     color:rgb(17, 16, 16);
 }
-/* estilos seccion li hijo de aside-filter */
-.aside-filter li{
-    list-style: none;
-    color:rgb(17, 16, 16);
-}
-/* estilos para x que cierra ventana */
+/* estilos para contenedor de icono x que cierra ventana */
 .filter__close{
     position: relative;
     width: 100%;
     height: 100%;
 }
-/* estilos i de x que cierra ventana  */
+/* estilos icono x que cierra ventana  */
 .filter__close i{
     position: absolute;
     top: 12px;
@@ -138,7 +130,7 @@ main{
     font-size: 20px;
     transition: all ease-in-out;
 }
-/* estilos i cuando este activo de x que cierra ventana  */
+/* estilos icono x cuando este activo */
 .filter__close i:active{
     color:#FFA000;
 }
@@ -149,7 +141,7 @@ main{
     width: 100%;
     padding: 20px 40px;
 }
-/* estilos seccion filter__item hijo de aside-filter */
+/* estilos seccion filter__item hijo de filter__content hijo aside-filter */
 .filter__item{
     padding-left: 16px;
 }
@@ -157,9 +149,14 @@ main{
 .aside-filter h3::first-letter{
     text-transform: uppercase;
 }
-/* estilos seccion ul hijo de aside-filter */
+/* estilos seccion ul hijo de filter__item hijo de aside-filter */
 .aside-filter ul{
     text-transform: uppercase;
+}
+/* estilos seccion li hijo de filter__item hijo de aside-filter */
+.aside-filter li{
+    list-style: none;
+    color:rgb(17, 16, 16);
 }
 /* estilos seccion card (contiene todas las tarjetas) */
 .section-cards{
