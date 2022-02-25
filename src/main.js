@@ -1,5 +1,3 @@
-// import { TypeFilter, RegionFilter } from './data.js';
-// importacion data y funciones data.js
 import data from './data/pokemon/pokemon.js';
 import * as dataFunctions from './data.js';
 
@@ -8,8 +6,6 @@ window.onload = () => {
     // declaracion variables uso global
     let copyDatasetToUse = JSON.parse(JSON.stringify(data.pokemon));
     let completeDataSet = dataFunctions.addStatsToObject(copyDatasetToUse);
-    // console.log("a",copyDatasetToUse);
-    // console.log("b",completeDataSet);
     
     // declaracion variable card para seccion tarjetas
     let card = document.querySelector('.section-cards');
@@ -19,7 +15,6 @@ window.onload = () => {
         let renderString = "";
         // ciclo for para crear tarjetas
         for(let pokemonCharacter of datasetToUse){
-        //console.log(pokemonCharacter);
         let cardStructure =
             `<article class="card">
                 <p class="card__id">${pokemonCharacter.num}</p>
@@ -44,8 +39,6 @@ window.onload = () => {
     // declaracion objeto filtros segun HU3
     let filters = {
         "type":[],
-        // "resistant":[],
-        // "weaknesses":[]
     }
 
     // funcion para concatenar dos arrays sin repetir elementos dentro de uno de ellos
@@ -66,22 +59,15 @@ window.onload = () => {
             // obtiene elementos(tipos-resistencia-debilidad) 
             // para cada seccion de filtros
             Object.keys(filters).forEach(filterKey => {
-                // console.log(filters[filterKey], pokemonCharacter[filterKey],pokemonCharacter.name);
                 filters[filterKey] = 
                 addElementsToArray(filters[filterKey], pokemonCharacter[filterKey])
             })
         }
-        // console.log(Object.keys(filters));
-        // console.log(filters);
-
         // organiza los elementos de cada seccion de filtro por orden alfabetico
         Object.keys(filters).forEach(filterKey => {
-            // console.log(filters[filterKey]);
             filters[filterKey].sort(function (a, b) {
-                // console.log(a.localeCompare(b));
                 return a.localeCompare(b);
-            }); 
-            // return filters[filterKey].sort()
+            });
         }) 
     }
 
@@ -99,10 +85,8 @@ window.onload = () => {
         // ciclo para crear las secciones de filtros de acuerdo 
         // a caracteristicas establecidas
         for(let[listkey, listValues] of Object.entries(filters)){
-            // console.log(listkey, listValues);
             let values = "";
             listValues.forEach((value,index)=>{
-                // console.log(value,index);
                 values+=
                 `<li>
                     <input type="checkbox" class="filter__check" 
@@ -139,7 +123,6 @@ window.onload = () => {
         let sortOption = document.querySelector('#sortOption');
         sortOption.addEventListener('click', ()=>{
             let optionValue = sortOption.value;
-            // console.log(prueb);
             let sortedNamesResult1;
             switch (true) {
                 case (optionValue === "nameAsc") :
@@ -160,16 +143,12 @@ window.onload = () => {
 
     // declaracion filterCheck para controlar el evento de check
     let filterCheck = document.querySelectorAll('.filter__check');
-    // console.log(filterCheck);
     
     // ciclo para encontrar los filtros a los que se les aplica check 
     filterCheck.forEach((checkBox)=>{
-        // console.log(element)
         checkBox.onchange = (event) => {
             let filteredPokemonsResult = dataFunctions.filterHandler(event.target.value,event.target.checked,completeDataSet);
             createCards(filteredPokemonsResult);
-            // console.log(event.target.value, event.target.checked)
-            // console.log(filteredPokemons.length)
             selectedSortOption(filteredPokemonsResult);
         };
         
