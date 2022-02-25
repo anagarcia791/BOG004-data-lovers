@@ -145,15 +145,15 @@ main{
 .filter__item{
     padding-left: 16px;
 }
-/* estilos seccion h3 hijo de aside-filter */
+/* estilos seccion h3 hijo de filter__item hijo de filter__content hijo aside-filter*/
 .aside-filter h3::first-letter{
     text-transform: uppercase;
 }
-/* estilos seccion ul hijo de filter__item hijo de aside-filter */
+/* estilos seccion ul hijo de filter__item hijo de filter__content hijo aside-filter */
 .aside-filter ul{
     text-transform: uppercase;
 }
-/* estilos seccion li hijo de filter__item hijo de aside-filter */
+/* estilos seccion li hijo de filter__item hijo de filter__content hijo aside-filter */
 .aside-filter li{
     list-style: none;
     color:rgb(17, 16, 16);
