@@ -1,0 +1,24 @@
+/* estilos main */
+main{
+    padding-top: 40px;
+}
+/* estilos contenedor icono de header */
+.content-icon{
+    width: 10vw;
+}
+/* estilos logo de header */
+.logo{
+    width: 40vw;
+}
+/* estilos seccion h2 hijo de aside-filter */
+.aside-filter h2{
+    background-color: #ffffff71;
+    padding: 0 4px;
+}
+
+@media (min-width: 725px){
+    /* estilos seccion card (contiene todas las tarjetas) */
+    .section-cards{
+        justify-content: space-evenly;
+    }
+}

@@ -1,27 +1,60 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>PokeLover</title>
-    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poke Lovers</title>
+    <link rel="icon" href="assets/images/Pokeicon.png">
+    <link rel="stylesheet" href="./styles/style.css"/>
+    <link rel="stylesheet" href="./styles/tablet.css" media="(min-width: 680px)"/>
+    <link rel="stylesheet" href="./styles/desktop.css" media="(min-width: 1000px)"/>
+    <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=Nunito:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/3485eef86c.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
-    <div id="root"></div>
+    <!-- creacion div para fondo blur con filtros en mobile -->
+    <div class="backdrop"></div>
+    
+    <!-- creacion seccion header -->
+    <header class="section-header">
+      <div class="content-logo">
+        <div>
+          <div class="content-icon">
+            <img class="icon" src="assets/images/Pokeicon.png" alt="ICON_POKE_LOVER">
+          </div>
+          <img class="logo" src="assets/images/LOGO_POKE_LOVER_600x230.png" alt="LOGO_POKE_LOVER">
+        </div>
+      </div>  
+    </header>
 
-    <section class="card">
-      <article class="card_conteiner">
-        <p class="card_Id">001</p>
-        <img class="card_character" src="https://www.serebii.net/pokemongo/pokemon/001.png" alt="character card">
-        <article class="card_2nd_cont">
-          <h3 class="card_name">BULBASAUR</h3>
-          <img class="card_type_icon" src="https://cdn-icons-png.flaticon.com/512/427/427112.png" alt="icon type card">
-          <p class="card_type">Water</p>
-        </article>
-      </article>
-    </section>
+    <main>
+      <!-- creacion seccion orden -->
+      <section class="options-bar">
+        <button id="filterOption" class="buttton-1">
+          <span>Filter by:</span>
+          <i class="fa-solid fa-angle-down"></i>
+        </button>
 
+        <select id="sortOption" class="buttton-1">
+          <option value="sortBy" selected style="display:none;">Sort By</option>
+          <option value="numAsc">0-99...</option>
+          <option value="numDes">...99-0</option>
+          <option value="nameAsc">A-Z</option>
+          <option value="nameDes">Z-A</option>
+        </select>
+      </section>
+
+      <!-- creacion seccion barra filtros -->
+      <aside class="aside-filter">
+      </aside>
+
+      <!-- creacion seccion tarjetas -->
+      <section class="section-cards"></section>
+    </main>
+    
     <script src="main.js" type="module"></script>
-
   </body>
 </html>

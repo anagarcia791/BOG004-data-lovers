@@ -1,0 +1,34 @@
+/* estilos para barra de opciones filtros y orden */
+.options-bar{
+    width: 97%;
+    justify-content: flex-end;
+}
+/* estilos para ocultar boton de opcion filtro  */
+#filterOption{
+    display: none;
+}
+/* estilos seccion filtros (contiene todos los filtros) */
+.aside-filter{
+    left: 0;
+    display: block;
+    position: sticky;
+    transform: none;
+    width: 18%;
+    padding: 20px 10px;
+    background-color: #ffffff71;
+}
+/* estilos para x que cierra ventana */
+.filter__close{
+    display: none;
+}
+/* estilos contenedor de filtros */
+.filter__content{
+    display: flex;
+    flex-direction:column;
+    width: 100%;
+    padding: 20px 10px;
+}
+/* estilos seccion card (contiene todas las tarjetas) */
+.section-cards{
+    width: 82%;
+}
