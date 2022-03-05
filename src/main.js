@@ -33,7 +33,7 @@ window.onload = () => {
         card.innerHTML = renderString;        
     }
     
-    // llamado funcion para crear tarjetas en html
+    // Invocando funcion para crear tarjetas en html
     createCards(completeDataSet)
 
     // declaracion objeto filtros segun HU3
@@ -114,7 +114,7 @@ window.onload = () => {
         filterSection.innerHTML = filterStructure;
     }
     
-    // llamado funcion para crear estructura de filtros en html 
+    // Invocando funcion para crear estructura de filtros en html 
     createFiltersStructure(filters)
     
     // funcion para mostrar informacion organizada de acuerdo a la seleccion
@@ -123,23 +123,26 @@ window.onload = () => {
         let sortOption = document.querySelector('#sortOption');
         sortOption.addEventListener('click', ()=>{
             let optionValue = sortOption.value;
-            let sortedNamesResult1;
-            switch (true) {
+            let sortedResult;
+            switch(true){
                 case (optionValue === "nameAsc") :
-                    sortedNamesResult1 = dataFunctions.sortNameAzHandler(datasetToUse);
-                    return createCards(sortedNamesResult1);
+                    sortedResult = dataFunctions.sortHandler(datasetToUse,"name","ASC");
+                    return createCards(sortedResult);
                 case (optionValue === "nameDes") :
-                    sortedNamesResult1 = dataFunctions.sortNameZaHandler(datasetToUse);
-                    return createCards(sortedNamesResult1);
+                    sortedResult = dataFunctions.sortHandler(datasetToUse,"name","DES");
+                    return createCards(sortedResult);
                 case (optionValue === "numAsc") :
-                    sortedNamesResult1 = dataFunctions.sortNumAscHandler(datasetToUse);
-                    return createCards(sortedNamesResult1);
+                    sortedResult = dataFunctions.sortHandler(datasetToUse,"num","ASC");
+                    return createCards(sortedResult);
                 case (optionValue === "numDes") :
-                    sortedNamesResult1 = dataFunctions.sortNumDesHandler(datasetToUse);
-                    return createCards(sortedNamesResult1);
+                    sortedResult = dataFunctions.sortHandler(datasetToUse,"num","DES");
+                    return createCards(sortedResult);
             }
         })
     }
+
+    // Invocando funcion para mostrar informacion organizada de acuerdo a la seleccion para toda la data
+    selectedSortOption(completeDataSet);
 
     // declaracion filterCheck para controlar el evento de check
     let filterCheck = document.querySelectorAll('.filter__check');
@@ -176,7 +179,4 @@ window.onload = () => {
         backdrop.style.display= "none";
         filterSection.style.display= "";
     });
-
-    // llamado funcion para mostrar informacion organizada de acuerdo a la seleccion para toda la data
-    selectedSortOption(completeDataSet);
 }
