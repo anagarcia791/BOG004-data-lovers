@@ -8,13 +8,31 @@ export function addStatsToObject(datasetToUse){
         let stamina = parseInt(pokemonCharacter.stats['base-stamina']);
         let sumStats = attack+defense+stamina;
         let meanStats = Math.round((attack+defense+stamina)/3);
-        let source = {
+        let newDataPokemonObject = {
             "sum-stats": sumStats,
             "mean-stats": meanStats,
         }
-        newDataPokemon[index] = Object.assign(pokemonCharacter,source);
+        newDataPokemon[index] = Object.assign(pokemonCharacter,newDataPokemonObject);
     });
     return newDataPokemon
+}
+
+// funcion para ordenar
+export const sortHandler=(datasetToUse,pokemonFeature,way)=>{
+    const copyDatasetToUse = [...datasetToUse];
+
+    function sortName(pokemon1,pokemon2){
+        return pokemon1[pokemonFeature].localeCompare(pokemon2[pokemonFeature]); 
+    }
+
+    let sortedData;
+    if(way === "ASC"){
+        sortedData = copyDatasetToUse.sort(sortName);
+    }else{
+        sortedData = copyDatasetToUse.sort(sortName).reverse();
+    }
+
+    return sortedData;
 }
 
 // declaracion activeFilters para adicionar el valor de los filtros seleccionados 
@@ -42,56 +60,4 @@ export function filterHandler(filter, checked, data){
         : filteredPokemons              // activeFilters.length diferente de 0 false
         
     return filteredPokemons;
-}
-
-// funcion para ordenar de la A a la Z
-export function sortNameAzHandler(datasetToUse){
-    const copyDatasetToUse = [...datasetToUse];
-    
-    function sortName(pokemonName1,pokemonName2){
-        return pokemonName1.name.localeCompare(pokemonName2.name); 
-    }
-
-    let sortedNamesAz = copyDatasetToUse.sort(sortName);
-
-    return sortedNamesAz;
-}
-
-// funcion para ordenar de la Z a la A
-export function sortNameZaHandler(datasetToUse){
-    const copyDatasetToUse = [...datasetToUse];
-    
-    function sortName(pokemonName1,pokemonName2){
-        return pokemonName2.name.localeCompare(pokemonName1.name);  
-    }
-
-    let sortedNamesZa = copyDatasetToUse.sort(sortName);
-
-    return sortedNamesZa;
-} 
-
-// funcion para ordenar de 0 a ...
-export function sortNumAscHandler(datasetToUse){
-    const copyDatasetToUse = [...datasetToUse];
-    
-    function sortNum(pokemonNum1,pokemonNum2){
-        return pokemonNum1.num.localeCompare(pokemonNum2.num);    
-    }
-
-    let sortedNumAsc = copyDatasetToUse.sort(sortNum);
-
-    return sortedNumAsc;
-}
-
-// funcion para ordenar de 100 a ...
-export function sortNumDesHandler(datasetToUse){
-    const copyDatasetToUse = [...datasetToUse];
-    
-    function sortNum(pokemonNum1,pokemonNum2){
-        return pokemonNum2.num.localeCompare(pokemonNum1.num);    
-    }
-
-    let sortedNumDes = copyDatasetToUse.sort(sortNum);
-
-    return sortedNumDes;
 }
