@@ -1,4 +1,4 @@
-import {addStatsToObject,filterHandler,sortNameAzHandler,sortNameZaHandler,sortNumAscHandler,sortNumDesHandler} from '../src/data.js';
+import {addStatsToObject,filterHandler,sortHandler} from '../src/data.js';
 
 // data de prueba
 const bulbasaur = {
@@ -124,10 +124,10 @@ describe('filter result', () => {
   });
 });
 
-// test de funcion sortNameAzHandler
+// test de funcion sortHandler con Az
 describe('sort AZ', () => {
   it('returns `sort AZ` 1', () => {
-    const result3 = sortNameAzHandler( addResult);
+    const result3 = sortHandler(addResult,"name","ASC");
     const resultAz = [
       {
         ...bulbasaur,
@@ -154,10 +154,10 @@ describe('sort AZ', () => {
   });
 });
 
-// test de funcion sortNameZaHandler
+// test de funcion sortHandler con Za
 describe('sort ZA', () => {
   it('returns `sort ZA` 1', () => {
-    const result4 = sortNameZaHandler(addResult);
+    const result4 = sortHandler(addResult,"name","DES");
     const resultZa = [
       {
         ...picachu,
@@ -184,10 +184,10 @@ describe('sort ZA', () => {
   });
 });
 
-// Test para funcion sortNumAscHandler
+// Test para funcion sortHandler con numAsc
 describe('sort numAsc', () => {
   it('returns `sort numAsc` 1', () => {
-    const result5 = sortNumAscHandler(addResult);
+    const result5 = sortHandler(addResult,"num","ASC");
     const resultNumAsc = [
       {
         ...bulbasaur,
@@ -214,10 +214,10 @@ describe('sort numAsc', () => {
   });
 });
 
-// Test para funcion sortNumDesHandler
+// Test para funcion sortHandler con numDes
 describe('sort numDes', () => {
   it('returns `sort numDes` 1', () => {
-    const result6 = sortNumDesHandler(addResult);
+    const result6 = sortHandler(addResult,"num","DES");
     const resultNumDes = [
       {
         ...charmander,
