@@ -21,15 +21,15 @@ export function addStatsToObject(datasetToUse){
 export const sortHandler=(datasetToUse,pokemonFeature,way)=>{
     const copyDatasetToUse = [...datasetToUse];
 
-    function sortName(pokemon1,pokemon2){
+    function sortFeature(pokemon1,pokemon2){
         return pokemon1[pokemonFeature].localeCompare(pokemon2[pokemonFeature]); 
     }
 
     let sortedData;
     if(way === "ASC"){
-        sortedData = copyDatasetToUse.sort(sortName);
+        sortedData = copyDatasetToUse.sort(sortFeature);
     }else{
-        sortedData = copyDatasetToUse.sort(sortName).reverse();
+        sortedData = copyDatasetToUse.sort(sortFeature).reverse();
     }
 
     return sortedData;
